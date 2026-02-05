@@ -7,11 +7,9 @@ class Bank:
     # Deposit
     def deposit(self,name,password,amount):
         if  name!=self.name or password!=self.__password:
-            print("Authentication failed")
-            return
+            return "Authentication failed"
         if amount <=0:
-            print("Invalid Amount")
-            return
+            return "Invalid Amount"
         
         self.__balance+=amount
         print(f"Deposit successful {amount}")
@@ -20,43 +18,35 @@ class Bank:
     # Withdraw
     def withdraw(self,name,password,amount):
         if  name!=self.name or password!=self.__password:
-            print("Authentication failed")
-            return
+            return "Authentication failed"
         if amount <=0:
-            print("Invalid Amount")
-            return
+            return "Invalid Amount"
         if amount > self.__balance:
-            print("Insufficient balance")
+            return "Insufficient balance"
         self.__balance-=amount
         print(f"Withdraw successful {amount}")
         return f"{name} Balance={self.__balance}"
     # Tranfer
     def transfer(self,name,password,amount,to_user):
         if  name!=self.name or password!=self.__password:
-            print("Authentication failed")
-            return
+            return "Authentication failed"
         if amount <=0:
-            print("Invalid Amount")
-            return
+            return "Invalid Amount"
         if amount > self.__balance:
-            print("Insufficient balance")
-            return
+            return "Insufficient balance"
         self.__balance-=amount
         to_user.__balance+=amount
-        print(f"Transfer successful To {user1.name} {amount}")
+        print(f"Transfer successful To {to_user.name} {amount}")
         return f"{name} Balance={self.__balance}"
         
     # Payment
     def payment(self,name,password,amount,service):
         if  name!=self.name or password!=self.__password:
-            print("Authentication failed")
-            return
+            return "Authentication failed"
         if amount <=0:
-            print("Invalid Amount")
-            return
+            return "Invalid Amount"
         if amount > self.__balance:
-            print("Insufficient balance")
-            return
+            return "Insufficient balance"
         self.__balance-=amount
         print(f"Payment successful {service} Service {amount}")
         return f"{name} Balance={self.__balance}"
@@ -73,6 +63,7 @@ print(user.withdraw("Somethea","123",2000))
 print(user.transfer("Somethea","123",3000,user1))
 print(user1.mybalance("John"))
 print(user.payment("Somethea","123",5000,"Internet"))
+print(user.deposit("III","111",3000))
 
         
         
